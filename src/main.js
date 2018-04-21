@@ -1,5 +1,8 @@
 import Vue from 'vue';
+import VueResource from 'vue-resource';
 import './style.scss';
+
+Vue.use(VueResource);
 
 import MovieList from './components/MovieList.vue';
 import MovieFilter from './components/MovieFilter.vue';
@@ -27,5 +30,8 @@ new Vue({
 	components: {
 		MovieList,
 		MovieFilter
+	},
+	created() {
+		console.log(this.$http);
 	}
 });

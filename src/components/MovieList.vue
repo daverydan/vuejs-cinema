@@ -1,6 +1,10 @@
 <template>
 	<div id="movie-list">
-		<movie-item v-for="movie in filteredMovies" :movie="movie.movie"></movie-item>
+		<div v-if="filteredMovies.length">
+			<movie-item v-for="movie in filteredMovies" :movie="movie.movie"></movie-item>
+		</div>
+		<div v-else-if="movies.length" class="no-results">No Results.</div>
+		<div v-else class="no-results">Loading...</div>
 	</div>	
 </template>
 
@@ -12,6 +16,12 @@
 		props: ['movies', 'genre', 'time'],
 
 		components: { MovieItem },
+
+		created() {
+			// check that moment was made available by the root component
+			// and accessible Globally in other components
+			console.log(this.$moment);
+		},
 
 		computed: {
 			filteredMovies() {

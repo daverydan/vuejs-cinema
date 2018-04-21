@@ -1,8 +1,14 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import moment from 'moment-timezone';
 import './style.scss';
 
 Vue.use(VueResource);
+
+moment.tz.setDefault("UTC");
+Object.defineProperty(Vue.prototype, '$moment', { get() {
+	return this.$root.moment;
+}});
 
 import MovieList from './components/MovieList.vue';
 import MovieFilter from './components/MovieFilter.vue';
@@ -13,7 +19,8 @@ new Vue({
 		return {
 			genre: [],
 			time: [],
-			movies: []
+			movies: [],
+			moment
 		};
 	},
 	methods: {

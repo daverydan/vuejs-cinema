@@ -1,10 +1,6 @@
 <template>
 	<div id="movie-list">
-		<movie-item v-for="movie in filteredMovies" 
-			 class="movie"
-			 :movie="movie"
-		>
-		</movie-item>
+		<movie-item v-for="movie in filteredMovies" :movie="movie.movie"></movie-item>
 	</div>	
 </template>
 
@@ -28,7 +24,14 @@
 				if (!this.genre.length) {
 					return true;
 				} else {
-					return this.genre.find(genre => movie.genre === genre);
+					let movieGenres = movie.movie.Genre.split(", ");
+					let matched = true;
+					this.genre.forEach(genre => {
+						if (movieGenres.indexOf(genre) === -1) {
+							matched = false;
+						}
+					});
+					return matched;
 				}
 			}
 		}

@@ -1,7 +1,10 @@
 <template>
 	<div id="movie-list">
 		<div v-if="filteredMovies.length">
-			<movie-item v-for="movie in filteredMovies" :movie="movie.movie"></movie-item>
+			<movie-item v-for="movie in filteredMovies"
+				:movie="movie.movie"
+				:sessions="movie.sessions"
+			></movie-item>
 		</div>
 		<div v-else-if="movies.length" class="no-results">No Results.</div>
 		<div v-else class="no-results">Loading...</div>
@@ -20,7 +23,7 @@
 		created() {
 			// check that moment was made available by the root component
 			// and accessible Globally in other components
-			console.log(this.$moment);
+			// console.log(this.$moment);
 		},
 
 		computed: {

@@ -12,7 +12,8 @@ new Vue({
 	data() {
 		return {
 			genre: [],
-			time: []
+			time: [],
+			movies: []
 		};
 	},
 	methods: {
@@ -32,6 +33,8 @@ new Vue({
 		MovieFilter
 	},
 	created() {
-		console.log(this.$http);
+		this.$http.get('/api').then(response => {
+			this.movies = response.data;
+		});
 	}
 });

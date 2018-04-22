@@ -5,6 +5,7 @@
 				:movie="movie.movie"
 				:sessions="movie.sessions"
 				:day="day"
+				:time="time"
 			></movie-item>
 		</div>
 		<div v-else-if="movies.length" class="no-results">No Results.</div>

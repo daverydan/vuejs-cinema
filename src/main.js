@@ -20,7 +20,8 @@ new Vue({
 			genre: [],
 			time: [],
 			movies: [],
-			moment
+			moment,
+			day: moment() // current day (i.e. today)
 		};
 	},
 	methods: {

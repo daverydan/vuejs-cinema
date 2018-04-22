@@ -4,6 +4,7 @@
 			<movie-item v-for="movie in filteredMovies"
 				:movie="movie.movie"
 				:sessions="movie.sessions"
+				:day="day"
 			></movie-item>
 		</div>
 		<div v-else-if="movies.length" class="no-results">No Results.</div>
@@ -16,7 +17,7 @@
 	import MovieItem from './MovieItem.vue';
 
 	export default {
-		props: ['movies', 'genre', 'time'],
+		props: ['movies', 'genre', 'time', 'day'],
 
 		components: { MovieItem },
 

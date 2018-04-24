@@ -1,11 +1,13 @@
 import Vue from 'vue';
 import VueResource from 'vue-resource';
+import VueRouter from 'vue-router';
 import moment from 'moment-timezone';
 import './style.scss';
 
 import Overview from './components/Overview.vue';
 
 Vue.use(VueResource);
+Vue.use(VueRouter);
 
 moment.tz.setDefault("UTC");
 // makes moment available to all components for use
@@ -20,8 +22,14 @@ Object.defineProperty(Vue.prototype, '$bus', { get() {
 	return this.$root.bus;
 } })
 
+import routes from './util/routes';
+const router = new VueRouter({ routes });
+
 new Vue({
 	el: '#app',
+
+	router,
+	
 	data() {
 		return {
 			genre: [],

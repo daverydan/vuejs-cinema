@@ -4,8 +4,6 @@ import VueRouter from 'vue-router';
 import moment from 'moment-timezone';
 import './style.scss';
 
-import Overview from './components/Overview.vue';
-
 Vue.use(VueResource);
 Vue.use(VueRouter);
 
@@ -41,15 +39,10 @@ new Vue({
 		};
 	},
 
-	components: {
-		Overview
-	},
-
 	created() {
 		this.$http.get('/api').then(response => {
 			this.movies = response.data;
 		});
-
 									  // pass through this
 		this.$bus.$on('check-filter', checkFilter.bind(this));
 	}

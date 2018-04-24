@@ -12,6 +12,7 @@
 				</router-link>
 				<span class="movie-rating">{{ movie.Rated }}</span>
 			</div>
+			<!-- slot to pass sessions -->
 			<slot></slot>
 		</div>
 	</div>

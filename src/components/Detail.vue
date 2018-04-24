@@ -1,6 +1,6 @@
 <template>
 	<div v-if="movie" id="detail">
-		<movie-item :movie="movie.movie" :sessions="[]"></movie-item>
+		<movie-item :movie="movie.movie"></movie-item>
 	</div>
 </template>
 

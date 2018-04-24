@@ -1,6 +1,6 @@
 <template>
 	<div id="overview">
-		<day-select></day-select>
+		<day-select :selected="day"></day-select>
     	<div class="main">
     		<movie-list :genre="genre"
     			:time="time"

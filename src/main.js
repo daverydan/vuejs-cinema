@@ -13,7 +13,7 @@ Object.defineProperty(Vue.prototype, '$moment', { get() {
 	return this.$root.moment;
 }});
 
-import { checkFilter } from './util/bus';
+import { checkFilter, setDay } from './util/bus';
 const bus = new Vue();
 // makes bus available to all components for use
 Object.defineProperty(Vue.prototype, '$bus', { get() {
@@ -45,5 +45,6 @@ new Vue({
 		});
 									  // pass through this
 		this.$bus.$on('check-filter', checkFilter.bind(this));
+		this.$bus.$on('set-day', setDay.bind(this));
 	}
 });

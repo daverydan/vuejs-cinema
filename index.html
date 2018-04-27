@@ -18,11 +18,16 @@
         <img src="/public/logo.png">
         <h1>Vue.js Cinema</h1>
     </div>
-    <router-view  :genre="genre"
-		:time="time"
-		:movies="movies" 
-		:day="day"
-	></router-view>
+    <!-- 
+    	KeepAlive tells Vue that when you remove any of the child components from the DOM, don't destroy and recreate them, instead, keep them in memory
+    -->
+    <keep-alive>
+	    <router-view  :genre="genre"
+			:time="time"
+			:movies="movies" 
+			:day="day"
+		></router-view>
+    </keep-alive>
 </div>
 <script src="/dist/build.js"></script>
 </body>

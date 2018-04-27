@@ -6,6 +6,8 @@ import './style.scss';
 
 Vue.use(VueResource);
 Vue.use(VueRouter);
+import Tooltip from './util/tooltip';
+Vue.use(Tooltip);
 
 moment.tz.setDefault("UTC");
 // makes moment available to all components for use
@@ -46,45 +48,5 @@ new Vue({
 									  // pass through this
 		this.$bus.$on('check-filter', checkFilter.bind(this));
 		this.$bus.$on('set-day', setDay.bind(this));
-	}
-});
-
-import { addClass, removeClass } from './util/helpers';
-
-let mouseOverHandler = function(event) {
-	// console.log('mouseover');
-	// console.log(event.target);
-	let span = event.target.parentNode.getElementsByTagName('SPAN')[0];
-	// console.log(span);
-	addClass(span, 'tooltip-show');
-}
-let mouseOutHandler = function(event) {
-	// console.log('mouseout');
-	let span = event.target.parentNode.getElementsByTagName('SPAN')[0];
-	removeClass(span, 'tooltip-show');
-}
-
-Vue.directive('tooltip', {
-	// element, values passed
-	bind(el, bindings) {
-		// console.log(el);
-		let span = document.createElement('SPAN');
-		let text = document.createTextNode('Seats available: 200');
-		span.appendChild(text);
-		addClass(span, 'tooltip');
-		el.appendChild(span);
-		let div = el.getElementsByTagName('DIV')[0];
-		div.addEventListener('mouseover', mouseOverHandler);
-		div.addEventListener('mouseout', mouseOutHandler);
-		div.addEventListener('touchstart', mouseOverHandler);
-		div.addEventListener('touchend', mouseOutHandler);
-	},
-	// removeEventListener(s) when element is removed from DOM
-	unbind(el) {
-		let div = el.getElementsByTagName('DIV')[0];
-		div.removeEventListener('mouseover', mouseOverHandler);
-		div.removeEventListener('mouseout', mouseOutHandler);
-		div.removeEventListener('touchstart', mouseOverHandler);
-		div.removeEventListener('touchend', mouseOutHandler);
 	}
 });

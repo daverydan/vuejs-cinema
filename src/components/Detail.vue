@@ -28,7 +28,7 @@
 
 		created() {
 			// used for testing id being passed
-			console.log(this.$route.params.id);
+			// console.log(this.$route.params.id);
 		},
 
 		computed: {
